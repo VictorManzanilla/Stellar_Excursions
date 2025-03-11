@@ -8,7 +8,8 @@ get("/") do
 # pp ENV.fetch("NASA_API_KEY")
   # https://images-api.nasa.gov
   
-  api_key = ENV.fetch("NASA_API_KEY")  
+  api_key = ENV['NASAAPIKEY']
+  puts api_key
   url = "https://api.nasa.gov/planetary/apod?api_key=#{api_key}" 
   
   response = HTTP.get(url)  
@@ -20,8 +21,9 @@ get("/") do
 end
 #######################################################################
 get("/mars") do
+  api_key = ENV['NASAAPIKEY']
 
-  api_key = ENV.fetch("NASA_API_KEY")  
+  pp api_key
   url = "https://api.nasa.gov/insight_weather/?api_key=#{api_key}&feedtype=json&ver=1.0" 
   
   response = HTTP.get(url)  
