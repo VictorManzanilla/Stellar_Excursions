@@ -21,6 +21,16 @@ end
 #######################################################################
 get("/mars") do
 
+  api_key = ENV.fetch("NASA_API_KEY")  
+  url = "https://api.nasa.gov/insight_weather/?api_key=#{api_key}&feedtype=json&ver=1.0" 
+  
+  response = HTTP.get(url)  
+  @mars_data = JSON.parse(response)
+  @sol675 = @mars_data.fetch("675", {})
+  @temperature = @sol675.fetch("AT", {})
+  # @season = @mars_data.fetch("Season")
+  
+
   erb(:mars)
 end
 #####################################################################
@@ -32,9 +42,4 @@ end
 get("/saturn") do
 
   erb(:saturn)
-end
-###################################################################
-get("/random") do
-
-  erb(:random)
 end
