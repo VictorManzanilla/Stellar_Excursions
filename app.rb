@@ -27,7 +27,10 @@ get("/mars") do
   response = HTTP.get(url)  
   @mars_data = JSON.parse(response)
   @sol675 = @mars_data.fetch("675", {})
-  @temperature = @sol675.fetch("AT", {})
+  @at = @sol675.fetch("AT", {})
+  @temperature = @at.fetch("av")
+  @season = @sol675.fetch("Season")
+
   # @season = @mars_data.fetch("Season")
   
 
