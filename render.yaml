@@ -9,4 +9,4 @@ services:
       - key: NASAAPIKEY
         value: knbdV0LUnOAHdFOj8eulaC0yqk0sDYFe1k2ldK8L
 
-        generateValue: true
+        #generateValue: true
